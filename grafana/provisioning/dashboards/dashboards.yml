@@ -1,0 +1,14 @@
+apiVersion: 1
+providers:
+  - name: 'default'
+    orgId: 1
+    folder: ''
+    type: file
+    disableDeletion: false
+    options:
+      path: /etc/grafana/dashboards
+
+
+# https://grafana.com/grafana/dashboards/19908-docker-container-monitoring-with-prometheus-and-cadvisor/
+# https://grafana.com/grafana/dashboards/763-redis-dashboard-for-prometheus-redis-exporter-1-x/
+# https://grafana.com/grafana/dashboards/1860-node-exporter-full/

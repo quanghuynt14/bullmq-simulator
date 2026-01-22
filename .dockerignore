@@ -1,0 +1,21 @@
+# Docker
+*.log
+npm-debug.log*
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Build
+dist/
+build/
+
+# Data
+redis-data/
+prometheus-data/
+grafana-data/

@@ -1,0 +1,14 @@
+{
+  "name": "bullmq",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "bullmq": "^5.66.5",
+    "command-line-args": "^6.0.1",
+    "ioredis": "^5.9.1"
+  },
+  "devDependencies": {
+    "@types/command-line-args": "^5.2.3",
+    "@types/node": "^25.0.6"
+  }
+}
