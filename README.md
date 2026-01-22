@@ -20,17 +20,13 @@ This project simulates a real-life production environment with BullMQ job proces
 ### Install Dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
-### Start Redis
+### Start Redis and monitoring with Docker
 
 ```bash
-# macOS with Homebrew
-brew services start redis
-
-# Or run directly
-redis-server
+docker compose up -d
 ```
 
 ## Usage
