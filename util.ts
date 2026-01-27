@@ -6,6 +6,73 @@ export const connection = new Redis({
   maxRetriesPerRequest: null
 });
 
+// Queue priorities for weighted job distribution
+// High priority: Critical business operations that need immediate processing
+// Medium priority: Standard business operations
+// Low priority: Background tasks, maintenance, monitoring
+export const QUEUE_PRIORITIES = {
+  high: [
+    // Financial & critical business
+    'payment-processor', 'invoice-generator', 'order-fulfillment', 'refund-processor',
+    'chargeback-handler', 'fraud-detection', 'subscription-renewer', 'billing-calculator',
+    'settlement-processor', 'payout-service', 'tax-calculator', 'commission-calculator',
+    'reconciliation', 'gift-card-processor', 'coupon-validator', 'discount-applier',
+    // Security critical
+    'mfa-verifier', 'token-refresher', 'permission-checker', 'access-logger',
+    'ddos-protector', 'firewall-updater', 'security-scanner', 'threat-analyzer',
+    // Real-time user facing
+    'chat-message', 'push-notification', 'sms-sender', 'webhook-processor',
+    'notification-sender', 'alert-processor', 'incident-detector',
+  ],
+  medium: [
+    // Content & media processing
+    'image-processing', 'video-encoding', 'file-converter', 'pdf-generator',
+    'thumbnail-creator', 'image-optimizer', 'video-thumbnail', 'audio-transcoder',
+    'watermark-adder', 'screenshot-service', 'qr-code-generator', 'barcode-generator',
+    'certificate-generator', 'document-parser', 'ocr-processor', 'subtitle-generator',
+    // Communication
+    'email-sender', 'social-media-post', 'content-moderation', 'translation-service',
+    // Reports & analytics
+    'report-generator', 'data-analytics', 'export-service', 'import-service',
+    'chart-generator', 'dashboard-updater', 'kpi-calculator', 'forecast-generator',
+    'revenue-reporter', 'variance-analyzer', 'pivot-calculator', 'graph-builder',
+    // User management
+    'user-onboarding', 'recommendation-engine', 'search-indexer', 'recommendation-updater',
+    'achievement-processor', 'badge-assigner', 'level-calculator', 'reward-distributor',
+    'referral-tracker', 'loyalty-points', 'leaderboard-updater', 'trending-calculator',
+    // Data operations
+    'data-migration', 'backup-service', 'restore-service', 'sync-service',
+    'etl-pipeline', 'data-cleaner', 'deduplicator', 'enrichment-service',
+    'normalizer-service', 'aggregator-service', 'rollup-processor',
+  ],
+  low: [
+    // Monitoring & logging
+    'log-aggregator', 'metrics-collector', 'health-checker', 'audit-logger',
+    'performance-monitor', 'memory-tracker', 'cpu-monitor', 'disk-monitor',
+    'network-monitor', 'bandwidth-tracker', 'latency-checker', 'uptime-monitor',
+    'availability-checker', 'sla-monitor', 'profiler-service',
+    // Maintenance & cleanup
+    'cleanup-service', 'cache-warmer', 'data-retention', 'archive-service',
+    'quarantine-manager', 'sanitizer-service', 'garbage-collector',
+    // Background processing
+    'sitemap-generator', 'seo-analyzer', 'link-checker', 'rss-feed-updater',
+    'news-scraper', 'weather-updater', 'stock-price-updater', 'crypto-price-tracker',
+    'playlist-updater', 'geocoding-service',
+    // Infrastructure
+    'replication-service', 'sharding-service', 'load-balancer', 'circuit-breaker',
+    'rate-limiter', 'quota-enforcer', 'dns-prefetch', 'preconnect-handler',
+    'prefetch-service', 'preload-optimizer', 'resource-hint', 'lazy-loader',
+    // Build & deployment (usually scheduled)
+    'asset-bundler', 'code-splitter', 'tree-shaker', 'css-minifier', 'js-minifier',
+    'html-minifier', 'transpiler-service', 'source-map-generator', 'container-builder',
+    'package-builder', 'artifact-uploader', 'registry-sync', 'deployment-orchestrator',
+    'rollout-manager', 'rollback-handler', 'canary-controller', 'feature-flag-evaluator',
+    // Compliance & validation
+    'compliance-checker', 'gdpr-processor', 'license-validator', 'trial-expiry-checker',
+    'vulnerability-checker', 'malware-scanner', 'virus-checker', 'penetration-tester',
+  ],
+} as const;
+
 export const JOB_TYPES = [
   'image-processing',
   'video-encoding',
