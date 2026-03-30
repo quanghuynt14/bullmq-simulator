@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   storage:
     image: redis:7.4-alpine
