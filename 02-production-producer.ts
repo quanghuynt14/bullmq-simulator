@@ -1,4 +1,5 @@
-import { Queue, JobsOptions } from 'bullmq';
+import { Queue } from 'bullmq';
+import type { JobsOptions } from 'bullmq';
 import commandLineArgs from 'command-line-args';
 import { connection, JOB_TYPES, QUEUE_PRIORITIES } from './util.ts';
 
